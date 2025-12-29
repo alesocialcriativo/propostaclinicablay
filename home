@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Estratégica Digital - Dr. Estalinin</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4; /* Warm neutral (Stone-100) */
+            color: #1c1917; /* Stone-900 */
+        }
+        
+        /* Fontes sem serifa e sem itálico para todos os títulos */
+        h1, h2, h3, h4 {
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.025em;
+            font-style: normal; /* Garante que não haja itálico */
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f5f5f4; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d6d3d1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a29e; 
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .active-tab {
+            border-bottom: 2px solid #059669;
+            color: #059669;
+        }
+    </style>
+
+</head>
+<body class="antialiased selection:bg-emerald-200 selection:text-emerald-900">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-stone-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-extrabold text-stone-800 tracking-tighter">ALESSANDRO SANTOS</span>
+                    <span class="hidden sm:block mx-2 text-stone-300">|</span>
+                    <span class="hidden sm:block text-xs text-stone-500 uppercase tracking-[0.2em] font-medium">Estratégia Digital</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="scrollToSection('hero')" class="text-stone-600 hover:text-emerald-600 font-semibold text-sm uppercase tracking-wider transition-colors">Início</button>
+                    <button onclick="scrollToSection('strategy')" class="text-stone-600 hover:text-emerald-600 font-semibold text-sm uppercase tracking-wider transition-colors">Estratégia</button>
+                    <button onclick="scrollToSection('investment')" class="text-stone-600 hover:text-emerald-600 font-semibold text-sm uppercase tracking-wider transition-colors">Investimento</button>
+                </div>
+                <!-- Link WhatsApp Atualizado -->
+                <a href="https://wa.me/5513991456886?text=Olá%20Alessandro,%20vi%20a%20proposta%20da%20Clínica%20Blay%20e%20gostaria%20de%20dar%20continuidade%20a%20contratação%20dos%20seus%20serviços!" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-emerald-500/30 flex items-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Contato
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+
+        <!-- 1. Hero / Introduction -->
+        <section id="hero" class="text-center py-10">
+            <div class="inline-block p-2 px-4 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-widest mb-6">
+                Proposta Comercial Exclusiva
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-stone-900 mb-6 leading-[0.9] tracking-tighter">
+                DR. ESTALININ & <br class="hidden md:block"> <span class="text-emerald-600">CLÍNICA BLAY</span>
+            </h1>
+            <p class="text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed font-medium">
+                Um plano estruturado para transformar sua autoridade médica em uma máquina de captação de pacientes particulares em Praia Grande.
+            </p>
+            
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm card-hover transition-all duration-300">
+                    <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mb-6 text-emerald-600 text-xl">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-3 uppercase tracking-tight">Autoridade</h3>
+                    <p class="text-stone-500 text-sm leading-relaxed">Posicionamento como referência regional absoluta em emagrecimento.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm card-hover transition-all duration-300">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-blue-600 text-xl">
+                        <i class="fas fa-book-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-3 uppercase tracking-tight">Educação</h3>
+                    <p class="text-stone-500 text-sm leading-relaxed">Conscientização do público sobre qualidade de vida e saúde.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm card-hover transition-all duration-300">
+                    <div class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-6 text-purple-600 text-xl">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-stone-800 mb-3 uppercase tracking-tight">Conversão</h3>
+                    <p class="text-stone-500 text-sm leading-relaxed">Transformar seguidores e visualizações em pacientes reais.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. The Strategy -->
+        <section id="strategy" class="bg-white rounded-[2.5rem] p-8 md:p-16 shadow-sm border border-stone-200">
+            <div class="mb-12">
+                <h2 class="text-4xl font-extrabold text-stone-900 mb-6 tracking-tight uppercase">Estratégia: Funil & Alcance</h2>
+                <p class="text-stone-600 max-w-3xl text-lg font-medium">
+                    Não vendemos "posts", construímos um ecossistema. Conteúdo orgânico premium + tráfego pago cirúrgico.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                
+                <!-- Left: Interactive Funnel -->
+                <div>
+                    <h3 class="text-sm font-bold text-stone-400 mb-8 flex items-center gap-2 uppercase tracking-[0.2em]">
+                        <i class="fas fa-filter text-emerald-500"></i> Metodologia de Funil
+                    </h3>
+                    <div class="space-y-4">
+                        <!-- Topo -->
+                        <div onclick="updateFunnelDetails('topo')" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-stone-900 p-8 text-white shadow-xl transition-all hover:scale-[1.02]">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400 mb-1 block">Fase 01</span>
+                                    <h4 class="text-2xl font-extrabold tracking-tight uppercase">Atração & Descoberta</h4>
+                                </div>
+                                <i class="fas fa-magnet text-3xl opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                        </div>
+
+                        <!-- Meio -->
+                        <div onclick="updateFunnelDetails('meio')" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-stone-800 p-8 text-white shadow-xl transition-all hover:scale-[1.02] mx-4">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-1 block">Fase 02</span>
+                                    <h4 class="text-2xl font-extrabold tracking-tight uppercase">Consciência & Autoridade</h4>
+                                </div>
+                                <i class="fas fa-brain text-3xl opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                        </div>
+
+                        <!-- Fundo -->
+                        <div onclick="updateFunnelDetails('fundo')" class="cursor-pointer group relative overflow-hidden rounded-2xl bg-stone-700 p-8 text-white shadow-xl transition-all hover:scale-[1.02] mx-8">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] font-black uppercase tracking-[0.3em] text-purple-400 mb-1 block">Fase 03</span>
+                                    <h4 class="text-2xl font-extrabold tracking-tight uppercase">Conversão & Agendamento</h4>
+                                </div>
+                                <i class="fas fa-calendar-check text-3xl opacity-20 group-hover:opacity-100 transition-opacity"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Details Box -->
+                    <div id="funnel-details" class="mt-8 p-8 bg-stone-50 rounded-3xl border border-stone-200 transition-all duration-500">
+                        <h4 class="text-stone-900 font-extrabold mb-3 text-xl uppercase tracking-tight" id="funnel-title">Selecione uma etapa</h4>
+                        <p class="text-stone-500 text-sm mb-6 leading-relaxed font-medium" id="funnel-desc">Clique nos cartões acima para detalhar a estratégia.</p>
+                        <div class="flex flex-wrap gap-2" id="funnel-tags"></div>
+                    </div>
+                </div>
+
+                <!-- Right: Targeting Radar Chart -->
+                <div>
+                    <h3 class="text-sm font-bold text-stone-400 mb-8 flex items-center gap-2 uppercase tracking-[0.2em]">
+                        <i class="fas fa-bullseye text-red-500"></i> Segmentação Ninja
+                    </h3>
+                    <div class="chart-container bg-stone-50 rounded-3xl p-6 border border-stone-200">
+                        <canvas id="targetingChart"></canvas>
+                    </div>
+                    <div class="mt-8 grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                            <span class="block text-[10px] font-bold text-stone-400 uppercase mb-1">Público-Alvo</span>
+                            <span class="text-sm font-bold text-stone-800 uppercase">Praia Grande + 20km</span>
+                        </div>
+                        <div class="p-4 bg-stone-50 rounded-xl border border-stone-100">
+                            <span class="block text-[10px] font-bold text-stone-400 uppercase mb-1">Interesses</span>
+                            <span class="text-sm font-bold text-stone-800 uppercase">Saúde & Bem-estar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Production Workflow -->
+        <section id="production" class="py-10">
+            <h2 class="text-4xl font-extrabold text-stone-900 mb-16 text-center tracking-tight uppercase">Fluxo de Produção Premium</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="relative group">
+                    <div class="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm text-center card-hover transition-all">
+                        <div class="text-4xl font-black text-stone-200 group-hover:text-emerald-500 mb-4 transition-colors">01</div>
+                        <h4 class="font-black text-stone-800 mb-3 uppercase tracking-tight">Pautas</h4>
+                        <p class="text-sm text-stone-500 font-medium">Roteiros pensados para gerar engajamento e autoridade.</p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="bg-white p-8 rounded-3xl border border-emerald-500 shadow-xl text-center card-hover transition-all">
+                        <div class="text-4xl font-black text-emerald-600 mb-4">02</div>
+                        <h4 class="font-black text-stone-800 mb-3 uppercase tracking-tight">Captação</h4>
+                        <p class="text-sm text-stone-500 font-medium">Equipamento profissional 4K e iluminação de cinema.</p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm text-center card-hover transition-all">
+                        <div class="text-4xl font-black text-stone-200 group-hover:text-emerald-500 mb-4 transition-colors">03</div>
+                        <h4 class="font-black text-stone-800 mb-3 uppercase tracking-tight">Edição</h4>
+                        <p class="text-sm text-stone-500 font-medium">Cortes dinâmicos e legendas para reter a atenção.</p>
+                    </div>
+                </div>
+
+                <div class="relative group">
+                    <div class="bg-white p-8 rounded-3xl border border-stone-200 shadow-sm text-center card-hover transition-all">
+                        <div class="text-4xl font-black text-stone-200 group-hover:text-emerald-500 mb-4 transition-colors">04</div>
+                        <h4 class="font-black text-stone-800 mb-3 uppercase tracking-tight">Postagem</h4>
+                        <p class="text-sm text-stone-500 font-medium">Gestão total do perfil e otimização de anúncios.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Investment -->
+        <section id="investment" class="bg-stone-900 text-white rounded-[3rem] p-8 md:p-20 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 bg-emerald-500 rounded-full opacity-10 blur-[100px]"></div>
+            
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                
+                <div>
+                    <h2 class="text-4xl font-extrabold mb-8 uppercase tracking-tight">Investimento</h2>
+                    <p class="text-stone-400 mb-12 text-lg font-medium">
+                        Transparência absoluta. Gestão profissional com valor fixo e verba de anúncios escalável.
+                    </p>
+
+                    <div class="bg-white/5 p-8 rounded-3xl border border-white/10 mb-10">
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="text-xs font-bold text-stone-500 uppercase tracking-widest">Verba de Tráfego</span>
+                            <span id="ad-spend-label" class="text-emerald-400 font-black text-sm uppercase tracking-tighter">Cenário Ideal</span>
+                        </div>
+                        <div class="flex gap-3 p-1.5 bg-black/40 rounded-2xl">
+                            <button onclick="updateInvestment('min')" id="btn-min" class="flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all text-stone-500 hover:text-white">Iniciante</button>
+                            <button onclick="updateInvestment('ideal')" id="btn-ideal" class="flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all bg-emerald-600 text-white shadow-xl">Performance</button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                            <span class="text-xs font-bold text-stone-500 uppercase tracking-widest">Honorários Mensais</span>
+                            <span class="text-2xl font-black tracking-tighter">R$ 2.500,00</span>
+                        </div>
+                        <div class="flex justify-between items-end border-b border-white/10 pb-4">
+                            <span class="text-xs font-bold text-stone-500 uppercase tracking-widest">Meta Ads (Sugerido)</span>
+                            <span id="ad-spend-value" class="text-2xl font-black text-emerald-400 tracking-tighter">R$ 1.000,00</span>
+                        </div>
+                        <div class="flex justify-between items-end pt-4">
+                            <span class="text-sm font-black text-stone-300 uppercase tracking-[0.2em]">Total Estimado</span>
+                            <span id="total-value" class="text-4xl font-black text-white tracking-tighter">R$ 3.500,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="chart-container" style="height: 350px;">
+                        <canvas id="investmentChart"></canvas>
+                    </div>
+                    <p class="mt-8 text-[10px] text-stone-500 uppercase tracking-widest font-bold">Distribuição do Capital</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-20 border-t border-stone-200">
+            <h3 class="text-3xl font-extrabold text-stone-900 mb-6 uppercase tracking-tight">Pronto para dominar o digital?</h3>
+            <p class="text-stone-500 mb-12 font-medium">Aguardo seu retorno para iniciarmos o cronograma.</p>
+            
+            <!-- Link WhatsApp Atualizado no Rodapé -->
+            <a href="https://wa.me/5513991456886?text=Olá%20Alessandro,%20vi%20a%20proposta%20da%20Clínica%20Blay%20e%20gostaria%20de%20dar%20continuidade%20a%20contratação%20dos%20seus%20serviços!" target="_blank" class="inline-flex items-center gap-4 bg-stone-900 text-white px-10 py-5 rounded-full font-black uppercase tracking-widest text-xs hover:bg-emerald-600 transition-all shadow-2xl hover:scale-105">
+                <i class="fab fa-whatsapp text-xl"></i>
+                Chamar no WhatsApp
+            </a>
+            
+            <div class="mt-20 flex flex-col items-center">
+                <div class="w-12 h-[2px] bg-stone-200 mb-8"></div>
+                <p class="font-black text-stone-800 uppercase tracking-widest text-[10px]">Alessandro Santos</p>
+                <p class="text-[9px] text-stone-400 uppercase tracking-[0.3em] mt-2">Audiovisual & Estratégia</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        const funnelData = {
+            topo: {
+                title: "ATRAÇÃO & DESCOBERTA",
+                desc: "Impactamos quem ainda não conhece a Clínica Blay através de conteúdo dinâmico e visualmente impecável.",
+                tags: ["Reels 4K", "Técnicas de Hook", "Legendas Dinâmicas", "Alcance Regional"]
+            },
+            meio: {
+                title: "CONSCIÊNCIA & AUTORIDADE",
+                desc: "Construímos confiança. Mostramos o Dr. Estalinin como a solução definitiva para o emagrecimento saudável.",
+                tags: ["Stories Estratégicos", "Provas Sociais", "Bastidores", "Nutrição & Saúde"]
+            },
+            fundo: {
+                title: "CONVERSÃO & AGENDAMENTO",
+                desc: "Chamadas diretas para ação (CTA). Campanhas focadas em levar o paciente para o WhatsApp da clínica.",
+                tags: ["Botão de Agendamento", "Tráfego Direto", "Remarketing", "Mensagens Prontas"]
+            }
+        };
+
+        const investmentData = { fee: 2500, min: 600, ideal: 1000 };
+        let investmentChartInstance = null;
+
+        function updateFunnelDetails(stage) {
+            const data = funnelData[stage];
+            const titleEl = document.getElementById('funnel-title');
+            const descEl = document.getElementById('funnel-desc');
+            const tagsEl = document.getElementById('funnel-tags');
+            const container = document.getElementById('funnel-details');
+
+            container.style.opacity = '0';
+            setTimeout(() => {
+                titleEl.textContent = data.title;
+                descEl.textContent = data.desc;
+                tagsEl.innerHTML = '';
+                data.tags.forEach(tag => {
+                    const span = document.createElement('span');
+                    span.className = 'px-3 py-1.5 bg-white border border-stone-200 rounded-lg text-[10px] font-black text-stone-800 uppercase tracking-wider shadow-sm';
+                    span.textContent = tag;
+                    tagsEl.appendChild(span);
+                });
+                container.style.opacity = '1';
+            }, 200);
+        }
+
+        function updateInvestment(scenario) {
+            document.getElementById('btn-min').className = scenario === 'min' 
+                ? "flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all bg-emerald-600 text-white shadow-xl"
+                : "flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all text-stone-500 hover:text-white";
+            document.getElementById('btn-ideal').className = scenario === 'ideal' 
+                ? "flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all bg-emerald-600 text-white shadow-xl"
+                : "flex-1 py-3 text-[10px] font-black uppercase tracking-widest rounded-xl transition-all text-stone-500 hover:text-white";
+
+            const adValue = investmentData[scenario];
+            const total = investmentData.fee + adValue;
+            document.getElementById('ad-spend-value').textContent = `R$ ${adValue.toLocaleString('pt-BR')},00`;
+            document.getElementById('total-value').textContent = `R$ ${total.toLocaleString('pt-BR')},00`;
+            document.getElementById('ad-spend-label').textContent = scenario === 'min' ? "Cenário Iniciante" : "Cenário Performance";
+
+            if (investmentChartInstance) {
+                investmentChartInstance.data.datasets[0].data = [investmentData.fee, adValue];
+                investmentChartInstance.update();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctxInvest = document.getElementById('investmentChart').getContext('2d');
+            investmentChartInstance = new Chart(ctxInvest, {
+                type: 'doughnut',
+                data: {
+                    labels: ['PRODUÇÃO', 'ANÚNCIOS'],
+                    datasets: [{
+                        data: [2500, 1000],
+                        backgroundColor: ['#292524', '#10b981'],
+                        borderWidth: 0,
+                        hoverOffset: 20
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { color: '#78716c', font: { family: 'Inter', weight: '800', size: 10 } } }
+                    },
+                    cutout: '85%'
+                }
+            });
+
+            const ctxTarget = document.getElementById('targetingChart').getContext('2d');
+            new Chart(ctxTarget, {
+                type: 'radar',
+                data: {
+                    labels: ['EMAGRECIMENTO', 'SAÚDE', 'OBESIDADE', 'FITNESS', 'QUALIDADE'],
+                    datasets: [{
+                        data: [100, 80, 90, 60, 85],
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        borderColor: '#10b981',
+                        borderWidth: 3,
+                        pointBackgroundColor: '#10b981'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            grid: { color: '#e7e5e4' },
+                            pointLabels: { font: { family: 'Inter', size: 9, weight: '900' }, color: '#444' },
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: { legend: { display: false } }
+                }
+            });
+            updateFunnelDetails('topo');
+        });
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
